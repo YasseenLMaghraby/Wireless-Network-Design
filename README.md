@@ -1,2 +1,84 @@
-# Wireless-Network-Design
-CCNA V7.02 Labs
+interface g0/0/0
+ip address 192.168.10.1 255.255.255.0
+no shcommands Router "1941"
+Router#ena
+Router#config t
+Router(config)#hostname R1
+R1(config)#line vty 0 5
+R1(config-line)#pass cisco
+R1(config-line)#login
+R1(config-line)#ena secret cisco
+R1(config)#service password-encryption
+R1(config)#banner motd &
+************************WELCOME************************ 
+
+        <<<<<WIRELESS NETWORK DESIGN>>>>>>>>
+          
+             <<<YASSEEN L MAGHRABY>>>>>>
+
+******************************************************&
+R1(config)#int g0/0
+R1(config-if)#ip address 192.168.10.1 255.255.255.0
+R1(config-if)#no sh
+R1(config-if)#do wr
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Wireless LAN Controller 
+.Config        >>>> Management >>>> Ipv4 Address    192.168.10.5
+                              >>>> Subnet Mask     255.255.255.0
+                              >>>> Default-Gateway 192.168.10.1 
+                              >>>> DNS server      192.168.10.2
+   
+.Wireless LAN >>>> Name & SSID : S1e
+    >>>> Authentications : WPA2-PSK , PSK PASS PHRASE : AAA@1111
+    >>>> Encryption Type : AES 
+    >>>> Central Control : local switching, central authentication
+    >>>> Save
+
+.DHCP        >>>> Interface >>>> Management >>>> Service on
+             >>>> Pool Name                S1eAddress
+             >>>> Default-Gateway          192.168.10.1
+             >>>> DNS Server               192.168.10.2
+             >>>> start ip address         192.168.10.51
+             >>>> subnet Mask              255.255.255.0
+             >>>> Maximum Number of Users  50
+             >>>> TFTP Server              0.0.0.0
+             >>>> WLC Address              192.168.10.5
+             >>>> Add , Save
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Light Weight Access Point0,1,2 " 3702i "
+. power on
+.Config >>>> Interface >>>> GigabitEthernet0/0/0 >>>> DHCP                                          OR
+                                             >>>> Static Ip >>>> Ipv4 Address    192.168.10.17,12,
+                                                            >>>> Subnet Mask     255.255.255.0
+.WLC >>>> Primary Controller >>>> 192.168.10.10
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+laptop,tablet,printer,smartphone client 1,2,3,4 "
+.power off
+.physical >>>> put WPC300N
+.power on 
+.Desktop >>>> pc wireless >>>> Profiles >>> New >>>> WIFI1 
+                                                >>>> Advanced Setup 
+                                                >>>> Wireless Network Name   WIFI1
+                                                >>>> NEXT 
+                                                >>>> Security                WPA2-Personal
+                                                >>>> preshared key           ZXCASDQWE123   
+                                                >>>> NEXT , SAVE
+                                                >>>> Connnect to Network
+                                                
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+pc,server,smartphone  Cient 5,6,7 "
+.power off
+.physical >>>> put WMP300N
+.power on 
+.Desktop >>>> pc wireless >>>> Profiles >>> New >>>> WIFI1 
+                                                >>>> Advanced Setup 
+                                                >>>> Wireless Network Name   WIFI1
+                                                >>>> NEXT 
+                                                >>>> Security                WPA2-Personal
+                                                >>>> preshared key           ZXCASDQWE123   
+                                                >>>> NEXT , SAVE
+                                                >>>> Connnect to Network
+ 
